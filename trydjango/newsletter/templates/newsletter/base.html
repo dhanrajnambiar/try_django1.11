@@ -1,0 +1,38 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>{% block title %}{% endblock %}Top navbar </title>
+
+    {% include "head_css.html" %}
+
+    <style>{% block style_block %}{% endblock %}</style>
+
+  </head>
+
+  <body>
+
+    {% include "navbar.html" %}
+
+
+    <main role="main" class="container">
+      {% block jumbotron %}
+      {% endblock %}
+      {% block content %}
+      {% endblock %}
+    </main>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    {% include "javascript.html" %}
+
+  </body>
+</html>

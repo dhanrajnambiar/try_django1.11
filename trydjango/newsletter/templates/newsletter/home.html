@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+<!-- above line says take everything from base.hmtl & combine with whatever over here; it means this template inherits from template "base.html" -->
+<!-- using cb% block block_name %cb followed by cb% endblock %cb we can create a block of html code
+ to be subtituted elsewhere(another template from which this page inherits) cb:imagine curly braces in place of cb, this done due to syntax constrains -->
+{% load staticfiles %}
+
+{% load crispy_forms_tags %}
+<!--load must come below extends  -->
+
+{% block title %} Welcome || {% endblock %}
+
+<style>
+{% block style_block %}
+.jumbotron {
+  background-color:#437735;
+  color:white;
+}
+{% endblock %}
+</style>
+
+{% block jumbotron %}
+  {% if not request.user.is_staff %}
+    <div class = "container">
+      <div class="jumbotron">
+        <div class = "row">
+            <div class = "col-lg-7 col-md-6 col-sm-6">
+                <h1>Try Django 1.11 Project</h1>
+                <p>This "TRY_DJANGO_1.11" This is a basic django trial APP.</p>
+                <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View Details &raquo;</a>
+            </div>
+            <div class = "col-lg-5 col-md-6 col-sm-6" style="height:300px;">
+              <!-- <video width="100%" controls>
+                <source src="{% static '/django_doc.webm'}" type = "video/x-webm">
+              </video> -->
+              <iframe width="100%" height="265px" src="https://www.youtube.com/embed/uR69CUAG1Lo" style="border:2px solid grey" gesture="media" allowfullscreen></iframe>
+              <!-- width:100% and height:auto makes it resposive -->
+              <!-- <img style = "max-width:100%;height:300px" src = "https://avatars1.githubusercontent.com/u/27804?s=400&v=4"> -->
+            </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {% if not request.user.is_authenticated %}
+    <div class = "row">
+        <div class = "col">
+            <p class = "lead text_align_center">Built with Django<br>
+            </p>
+        </div>
+        <div class = "col">
+            <p class = "lead text_align_center">Crispy forms makes crispy
+            <a href = "http://django-crispy-forms.readthedocs.io/en/latest/"><i class = "fa fa-codiepie fa-lg" aria-hidden="True"></i></a>
+            </p>
+        </div>
+        <div class = "col">
+            <p class = "lead text_align_center"> Powered by Bootstrap
+            <a href="https:getbootstrap.com"><img style="max-width:100%;height:50px" src = "{% static '/img/bootstrap.png' %}"></img></a>
+            </p>
+        </div>
+    </div>
+
+
+    <div class = "col-lg-3 col-md-5 col-sm-6 float-right">
+        <p class = "lead text_align_center">{{template_title}}</p>
+      <!--col-md-3 means 3 * (1/12)th of the width of the page on medium screen size devices: as crispy forms divide a page width into 12 peices  -->
+        <form  method = 'post', action = ''> {% csrf_token %}
+          {{form|crispy}}
+          <!-- # above 'form|crispy' to render form as crispy form -->
+          <p> <input class = 'btn btn-primary' type = 'submit' value = 'SIGNUP'> </p>
+        </form>
+    </div>
+
+  {% else %}
+
+  <div class = "col-12 text_align_center">
+    <h2> Welcome {{ name }}!!!</h2><p><strong> Here is the list of registered users</strong></p>
+  </div>
+
+  <h2 class = "text_align_center">List of SignUp's</h2>
+  <table class = "table">
+    {% for item in signup_list %}
+      {% if item.full_name != None %}
+        <tr>
+          <th>{{forloop.counter}}</th>
+          <th>{{item.full_name}}</th>
+          <th>{{item.email}}</th>
+          <th>{{item.time_stamp}}</th>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </table>
+
+  {% endif %}
+
+{% endblock %}

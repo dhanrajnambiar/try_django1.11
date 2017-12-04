@@ -1,0 +1,51 @@
+{% load staticfiles %}
+<nav class="navbar flex-row navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class = "container">
+      <a class="navbar-brand navbar-hover" href="http://djangoproject.com"><img style="max-width:100%;height:50px" src = "{% static '/img/django.png' %}"></img></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li>
+            <a class="nav-link" href='{% url "about_proj" %}'>ABOUT <span class="sr-only">(current)</span></a>
+            <!-- ******in the above line "about_proj" is the name given to a url pattern in my_project/urls.py**** -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/newsletter/contact">CONTACT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fa fa-refresh fa-spin fa-2x"  aria-hidden="True" href="/newsletter"></a>
+          </li>
+        </ul>
+
+        <ul class = "nav navbar-nav navbar-right">
+          <li>
+            {% if not request.user.is_authenticated and not "/accounts/login" in request.get_full_path %}
+              <form class = "navbar-form navbar-right" method = "POST"  action = "{% url 'auth_login' %}">{% csrf_token %}
+                  <div class = "form-group">
+                      <input class = "form-control" type = "text"  name = "username" placeholder="Username">
+                  </div>
+                  <div class = "form-group">
+                      <input class = "form-control" type = "password" name = "password" placeholder = "Password">
+                  </div>
+                  <button type = "submit" class = "btn btn-default">Login</button>
+              </form>
+            {% else %}
+              <a href = "{% url 'auth_logout' %}">Logout</a>
+            {% endif %}
+          </li>
+
+          <li>
+            {% if not "/accounts/register" in request.get_full_path %}
+                <a href = "/accounts/register">Register</a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+<!-- the div inside "nav" tag is which i added to toggle b/w class = container & container-fluid-->
+<!-- registration_register url for Register /accounts/register
+auth_login                              /accounts/login
+auth_logout                             /account/logout -->

@@ -1,0 +1,10 @@
+.text_align_center{
+  text-align:center;
+}
+
+.bg-dark {
+  background-color:#49753d !important;
+}
+.mb-4, .my-4 {
+    margin-bottom: .2rem !important;
+}
