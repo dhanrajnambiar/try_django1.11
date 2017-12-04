@@ -23,14 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '()ltlfnw#p32^s2zeg)*hml9bh+n)7uk!127=atlq_s0ez2lhf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 #email settings for gmail smtp server to send mails to valid mail id registering at created website
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangotestmail89@gmail.com'
-EMAIL_HOST_PASSWORD = 'djangodavid '
+EMAIL_HOST_PASSWORD = 'django@david123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

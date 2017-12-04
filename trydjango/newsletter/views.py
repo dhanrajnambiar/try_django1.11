@@ -55,7 +55,7 @@ def contact(request):#this view is for submitting contact details and automatica
             'Thank you for Query!!. We will ping you soon. ('  + message +  ') ' + 'Mr.' + name,
              mail_sender,
              [mail],
-             fail_silently = False,
+             fail_silently = True,
         )
 
     return render(request,'newsletter/contact.html',context)

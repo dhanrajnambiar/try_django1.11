@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 #email settings for gmail smtp server to send mails to valid mail id registering at created website
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangotestmail89@gmail.com'
-EMAIL_HOST_PASSWORD = 'djangodavid '
+EMAIL_HOST_PASSWORD = 'django@david123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
