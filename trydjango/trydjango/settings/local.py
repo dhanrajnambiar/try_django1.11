@@ -25,7 +25,7 @@ SECRET_KEY = '()ltlfnw#p32^s2zeg)*hml9bh+n)7uk!127=atlq_s0ez2lhf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','dhanraj.pythonanywhere.com']
 
 #email settings for gmail smtp server to send mails to valid mail id registering at created website
 EMAIL_HOST = 'smtp.gmail.com'
