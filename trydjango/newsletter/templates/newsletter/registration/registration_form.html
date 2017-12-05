@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -9,7 +8,7 @@
 <h1>Register for free!</h1>
 <form method="post" action=".">
   {% csrf_token %}
-  {{ form|crispy }}
+  {{ form.as_p }}
   <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Join' %}" />
 </form>
 </div>

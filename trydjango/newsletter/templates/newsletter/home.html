@@ -4,7 +4,7 @@
  to be subtituted elsewhere(another template from which this page inherits) cb:imagine curly braces in place of cb, this done due to syntax constrains -->
 {% load staticfiles %}
 
-{% load crispy_forms_tags %}
+
 <!--load must come below extends  -->
 
 {% block title %} Welcome || {% endblock %}
@@ -68,7 +68,7 @@
         <p class = "lead text_align_center">{{template_title}}</p>
       <!--col-md-3 means 3 * (1/12)th of the width of the page on medium screen size devices: as crispy forms divide a page width into 12 peices  -->
         <form  method = 'post', action = ''> {% csrf_token %}
-          {{form|crispy}}
+          {{form.as_p}}
           <!-- # above 'form|crispy' to render form as crispy form -->
           <p> <input class = 'btn btn-primary' type = 'submit' value = 'SIGNUP'> </p>
         </form>
