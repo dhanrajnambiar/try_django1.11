@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from . import views
+from newsletter.views import home
 
 
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls, name = 'newsletter_url'),
     url(r'^newsletter/', include('newsletter.urls')),
-    url(r'^$', views.about, name = 'about_proj'),
+    url(r'^$', home, name = 'about_proj'),
 
     #django-registration-redux url
     url(r'^accounts/', include('registration.backends.default.urls')),
